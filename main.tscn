@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bebhky2eergq0"]
+
+[ext_resource type="Script" uid="uid://ciu37ovbrff8o" path="res://area_2d.gd" id="1_epypp"]
+[ext_resource type="PackedScene" uid="uid://n4fq1fmcaa5v" path="res://wall.tscn" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://cufyy63i7mqwm" path="res://player.tscn" id="2_0e48y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
+size = Vector2(1250, 1012)
+
+[node name="Node2D" type="Node2D" unique_id=176820975]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=950884352]
+script = ExtResource("1_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=961010141]
+position = Vector2(-29, 105)
+shape = SubResource("RectangleShape2D_0e48y")
+
+[node name="wall" parent="." unique_id=1348817702 instance=ExtResource("1_wtcfe")]
+position = Vector2(-390, -262)
+
+[node name="wall2" parent="." unique_id=363711931 instance=ExtResource("1_wtcfe")]
+position = Vector2(-493.99994, 459.00003)
+rotation = -1.5780195
+
+[node name="wall3" parent="." unique_id=118527245 instance=ExtResource("1_wtcfe")]
+position = Vector2(425, 435.00003)
+rotation = -1.5631832
+
+[node name="wall4" parent="." unique_id=501324745 instance=ExtResource("1_wtcfe")]
+position = Vector2(-373, 493)
+
+[node name="player" parent="." unique_id=1854291987 instance=ExtResource("2_0e48y")]
