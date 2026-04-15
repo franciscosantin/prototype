@@ -19,7 +19,7 @@ func _run_logic() -> void:
 			move_dir = Vector2(0, sign(diff.y))
 		
 		# Si el jugador intenta caminar hacia donde ya hay gravedad, lo ignoramos
-		if move_dir != player.gravity_dir:
+		if move_dir not in [-player.gravity_dir, player.gravity_dir]:
 			match move_dir:
 				Vector2(-1,0), Vector2(0,1):
 					player.animatedSprite.flip_h = true
