@@ -1,6 +1,7 @@
 extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
+	player.animatedSprite.play("walking")
 	if player.is_pressing:
 		_run_logic()
 
@@ -19,6 +20,11 @@ func _run_logic() -> void:
 		
 		# Si el jugador intenta caminar hacia donde ya hay gravedad, lo ignoramos
 		if move_dir != player.gravity_dir:
+			match move_dir:
+				Vector2(-1,0), Vector2(0,1):
+					player.animatedSprite.flip_h = true
+				Vector2(1,0), Vector2(0,-1):
+					player.animatedSprite.flip_h = false
 			player.velocity = move_dir * player.walk_speed
 
 func physics_update(_delta: float) -> void:

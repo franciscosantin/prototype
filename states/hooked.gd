@@ -1,6 +1,7 @@
 extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
+	player.animatedSprite.play("idle")
 	player.velocity = Vector2.ZERO
 
 func physics_update(_delta: float) -> void:

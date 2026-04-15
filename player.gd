@@ -10,6 +10,7 @@ var valid_moving_dir: Vector2 = Vector2(1,0)
 var hooked: bool = false
 @onready var fsm := $StateMachine
 @onready var hookBtn := $Control/HookButton
+@onready var animatedSprite := $AnimatedSprite2D
 
 enum SurfaceType { normal, attachable }
 

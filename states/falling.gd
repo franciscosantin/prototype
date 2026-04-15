@@ -1,6 +1,7 @@
 extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
+	player.animatedSprite.play("falling")
 	player.velocity = player.gravity_dir * player.gravity_power
 
 func physics_update(_delta: float) -> void:
