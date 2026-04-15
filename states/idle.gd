@@ -11,5 +11,5 @@ func physics_update(_delta: float) -> void:
 		finished.emit(FALLING)
 	elif player.hooked:
 		finished.emit(HOOKED)
-	elif player.is_pressing:
+	elif player.can_run():
 		finished.emit(RUNNING)

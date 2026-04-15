@@ -32,6 +32,23 @@ func aplicar_gravedad(dir: Vector2) -> void:
 	# Esto permite que is_on_floor() funcione correctamente
 	up_direction = -gravity_dir
 
+func can_run() -> bool:
+	if !is_pressing:
+		return false
+	var target = get_global_mouse_position()
+	var diff = target - global_position
+	
+	if diff.length() <= 20:
+		return false
+	
+	var move_dir = Vector2.ZERO
+	if abs(diff.x) > abs(diff.y):
+		move_dir = Vector2(sign(diff.x), 0)
+	else:
+		move_dir = Vector2(0, sign(diff.y))
+	
+	return move_dir not in [-gravity_dir, gravity_dir]
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventMouseButton:
 		is_pressing = event.pressed
