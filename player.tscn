@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bq60w3vgju33b" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://b3md67bdihn5v" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://d0bqjcjmrdhxp" path="res://state_machine.gd" id="3_hqtel"]
+[ext_resource type="Script" uid="uid://dc8g8qa21yw8g" path="res://states/idle.gd" id="4_sweqy"]
+[ext_resource type="Script" uid="uid://dun1fhmbqoofc" path="res://states/falling.gd" id="5_2hs0m"]
+[ext_resource type="Script" uid="uid://coqdodnqg3v66" path="res://states/running.gd" id="6_1jxqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(125, 127)
@@ -17,3 +21,16 @@ texture = ExtResource("1_4flbx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2112898129]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1060138554]
+script = ExtResource("3_hqtel")
+metadata/_custom_type_script = "uid://d0bqjcjmrdhxp"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=726520686]
+script = ExtResource("4_sweqy")
+
+[node name="Falling" type="Node" parent="StateMachine" unique_id=1575128729]
+script = ExtResource("5_2hs0m")
+
+[node name="Running" type="Node" parent="StateMachine" unique_id=732725909]
+script = ExtResource("6_1jxqw")
