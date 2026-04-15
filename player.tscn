@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dc8g8qa21yw8g" path="res://states/idle.gd" id="4_sweqy"]
 [ext_resource type="Script" uid="uid://dun1fhmbqoofc" path="res://states/falling.gd" id="5_2hs0m"]
 [ext_resource type="Script" uid="uid://coqdodnqg3v66" path="res://states/running.gd" id="6_1jxqw"]
+[ext_resource type="Script" uid="uid://v2chbmgknt6f" path="res://states/hooked.gd" id="7_1jxqw"]
+[ext_resource type="Script" uid="uid://cfax8do50g4hp" path="res://states/climbing.gd" id="8_dw050"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(125, 127)
@@ -34,3 +36,24 @@ script = ExtResource("5_2hs0m")
 
 [node name="Running" type="Node" parent="StateMachine" unique_id=732725909]
 script = ExtResource("6_1jxqw")
+
+[node name="Hooked" type="Node" parent="StateMachine" unique_id=1091489163]
+script = ExtResource("7_1jxqw")
+
+[node name="Climbing" type="Node" parent="StateMachine" unique_id=2011317618]
+script = ExtResource("8_dw050")
+
+[node name="Control" type="Control" parent="." unique_id=1840890041]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HookButton" type="Button" parent="Control" unique_id=1972749679]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -67.0
+offset_right = 63.0
+offset_bottom = 62.0
+
+[connection signal="button_down" from="Control/HookButton" to="." method="_on_hook_button_button_down"]

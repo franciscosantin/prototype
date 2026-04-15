@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://ciu37ovbrff8o" path="res://area_2d.gd" id="1_epypp"]
 [ext_resource type="PackedScene" uid="uid://n4fq1fmcaa5v" path="res://wall.tscn" id="1_wtcfe"]
 [ext_resource type="PackedScene" uid="uid://cufyy63i7mqwm" path="res://player.tscn" id="2_0e48y"]
+[ext_resource type="PackedScene" uid="uid://bj0d6ofli8rmw" path="res://attachable_wall.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cn1njjqhmt304" path="res://attachable_area.tscn" id="5_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(1250, 1012)
@@ -31,3 +33,9 @@ rotation = -1.5631832
 position = Vector2(-373, 493)
 
 [node name="player" parent="." unique_id=1854291987 instance=ExtResource("2_0e48y")]
+
+[node name="AttachableWall" parent="." unique_id=1348608788 instance=ExtResource("4_1bvp3")]
+position = Vector2(-191, 150)
+scale = Vector2(2, 1)
+
+[node name="AttachableArea" parent="." unique_id=1721860233 instance=ExtResource("5_lquwl")]

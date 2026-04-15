@@ -1,10 +1,18 @@
 extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
-	if player.is_pressing:
-		_run_logic()
+	player.velocity = Vector2.ZERO
 
-func _run_logic() -> void:
+func physics_update(_delta: float) -> void:
+	if not player.hooked:
+		finished.emit(IDLE)
+	elif player.is_pressing:
+		_climb_logic()
+	else:
+		finished.emit(HOOKED)
+	player.move_and_slide()
+
+func _climb_logic() -> void:
 	var target = player.get_global_mouse_position()
 	var diff = target - player.global_position
 	
@@ -18,14 +26,5 @@ func _run_logic() -> void:
 			move_dir = Vector2(0, sign(diff.y))
 		
 		# Si el jugador intenta caminar hacia donde ya hay gravedad, lo ignoramos
-		if move_dir != player.gravity_dir:
-			player.velocity = move_dir * player.walk_speed
-
-func physics_update(_delta: float) -> void:
-	if not player.is_on_floor():
-		finished.emit(FALLING)
-	elif not player.is_pressing:
-		finished.emit(IDLE)
-	else:
-		_run_logic()
-	player.move_and_slide()
+		if move_dir == player.valid_moving_dir or move_dir == -player.valid_moving_dir:
+			player.velocity = move_dir * player.climb_speed
