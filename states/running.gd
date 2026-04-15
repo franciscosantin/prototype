@@ -22,10 +22,10 @@ func _run_logic() -> void:
 			player.velocity = move_dir * player.walk_speed
 
 func physics_update(_delta: float) -> void:
-	player.move_and_slide()
 	if not player.is_on_floor:
 		finished.emit(FALLING)
 	elif not player.is_pressing:
 		finished.emit(IDLE)
 	else:
 		_run_logic()
+	player.move_and_slide()
