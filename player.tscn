@@ -157,6 +157,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ek41f"]
+size = Vector2(132, 143)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1146882141]
 script = ExtResource("1_onrkg")
 
@@ -207,5 +210,11 @@ position = Vector2(0, -1)
 scale = Vector2(2.453125, 2.453125)
 sprite_frames = SubResource("SpriteFrames_pbfsw")
 animation = &"climbing_hanging"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=296138292]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1370683206]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_ek41f")
 
 [connection signal="button_down" from="Control/HookButton" to="." method="_on_hook_button_button_down"]

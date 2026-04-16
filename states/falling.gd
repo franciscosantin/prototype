@@ -10,3 +10,5 @@ func physics_update(_delta: float) -> void:
 
 	if player.is_on_floor():
 		finished.emit(IDLE)
+	elif player.hooked:
+		finished.emit(HOOKED)

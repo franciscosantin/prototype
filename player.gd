@@ -8,11 +8,18 @@ var gravity_dir: Vector2 = Vector2.ZERO
 var is_pressing: bool = false
 var valid_moving_dir: Vector2 = Vector2(1,0)
 var hooked: bool = false
+var can_hook: bool = false
 @onready var fsm := $StateMachine
 @onready var hookBtn := $Control/HookButton
 @onready var animatedSprite := $AnimatedSprite2D
 
 enum SurfaceType { normal, attachable }
+
+func _in_proximity_to_attachable() -> bool:
+	for body in $Area2D.get_overlapping_bodies():
+		if body is AttachableWall:
+			return true
+	return false
 
 func get_surface_type() -> SurfaceType:
 	var collision = get_last_slide_collision()
@@ -56,7 +63,5 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_hook_button_button_down() -> void:
 	if hooked:
 		hooked = false
-	else:
-		match get_surface_type():
-			SurfaceType.attachable:
-				hooked = not hooked
+	elif _in_proximity_to_attachable():
+		hooked = not hooked
