@@ -20,10 +20,10 @@ func _run_logic() -> void:
 		
 		# Si el jugador intenta caminar hacia donde ya hay gravedad, lo ignoramos
 		if move_dir not in [-player.gravity_dir, player.gravity_dir]:
-			match move_dir:
-				Vector2(-1,0), Vector2(0,1):
+			match [move_dir, player.up_direction]:
+				[Vector2(-1,0), Vector2(0,-1)], [Vector2(1,0), Vector2(0,1)], [Vector2(0,1), Vector2(-1,0)], [Vector2(0,-1), Vector2(1,0)]:
 					player.animatedSprite.flip_h = true
-				Vector2(1,0), Vector2(0,-1):
+				[Vector2(1,0), Vector2(0,-1)], [Vector2(-1,0), Vector2(0,1)], [Vector2(0,-1), Vector2(-1,0)], [Vector2(0,1), Vector2(1,0)]:
 					player.animatedSprite.flip_h = false
 			player.velocity = move_dir * player.walk_speed
 
