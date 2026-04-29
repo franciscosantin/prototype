@@ -10,16 +10,18 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var real_g = Input.get_gravity()
 	if abs(real_g.x) > abs(real_g.y):
 		# sign() devuelve 1 si es positivo o -1 si es negativo
 		gravity_direction = Vector2(sign(real_g.x), 0)
 	else:
 		gravity_direction = Vector2(0,-1 * sign(real_g.y))
+	var normalized_g = real_g.normalized()
+	gravity_direction = Vector2(normalized_g.x, -normalized_g.y)
 	actualizar_cuerpos()
 	
 	
@@ -36,11 +38,4 @@ func actualizar_cuerpos() -> void:
 			actualizar_orientacion(cuerpo)
 
 func actualizar_orientacion(cuerpo: CharacterBody2D):
-	if gravity_direction == Vector2(0, 1):
-		cuerpo.rotation_degrees = 0
-	elif gravity_direction == Vector2(0, -1):
-		cuerpo.rotation_degrees = 180
-	elif gravity_direction == Vector2(1, 0):
-		cuerpo.rotation_degrees = -90
-	elif gravity_direction == Vector2(-1, 0):
-		cuerpo.rotation_degrees = 90
+	cuerpo.rotation_degrees = Vector2(gravity_direction.x, -gravity_direction.y).angle()

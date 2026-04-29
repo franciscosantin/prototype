@@ -2,7 +2,8 @@ class_name Player extends CharacterBody2D
 
 @export var walk_speed: float = 300.0
 @export var climb_speed: float = 80.0
-@export var gravity_power: float = 800.0
+@export var gravity_power: float = 50.0
+@export var terminal_velocity: float = 2000.0
 
 var gravity_dir: Vector2 = Vector2.ZERO
 var is_pressing: bool = false
@@ -27,7 +28,6 @@ func get_surface_type() -> SurfaceType:
 		var collider = collision.get_collider()
 		if collider is AttachableWall:
 			valid_moving_dir = collider.valid_moving_dir
-			collider.global_position*collider.valid_moving_dir - global_position*collider.valid_moving_dir
 			return SurfaceType.attachable
 	return SurfaceType.normal
 
