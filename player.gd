@@ -6,6 +6,7 @@ class_name Player extends CharacterBody2D
 @export var terminal_velocity: float = 2000.0
 
 var gravity_dir: Vector2 = Vector2.ZERO
+var gravity_dir_dis: Vector2 = Vector2(0,-1)
 var is_pressing: bool = false
 var valid_moving_dir: Vector2 = Vector2(1,0)
 var hooked: bool = false
@@ -38,6 +39,13 @@ func aplicar_gravedad(dir: Vector2) -> void:
 	# Le decimos a Godot que el "techo" es lo opuesto a la gravedad
 	# Esto permite que is_on_floor() funcione correctamente
 	up_direction = -gravity_dir
+	if abs(gravity_dir.x) >= abs(gravity_dir.y):
+		gravity_dir_dis = Vector2(1*sign(gravity_dir.x),0)
+	else:
+		gravity_dir_dis = Vector2(0,1*sign(gravity_dir.y))
+		
+func change_orientation(g_dir: Vector2) -> void:
+	rotation_degrees = g_dir.angle()*180/PI-90
 
 func can_run() -> bool:
 	if !is_pressing:

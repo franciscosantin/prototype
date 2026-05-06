@@ -35,7 +35,8 @@ func actualizar_cuerpos() -> void:
 			# Le pasamos la dirección de la gravedad al script del personaje
 			if cuerpo.has_method("aplicar_gravedad"):
 				cuerpo.aplicar_gravedad(gravity_direction)
-			actualizar_orientacion(cuerpo)
+			else:
+				actualizar_orientacion(cuerpo)
 
 func actualizar_orientacion(cuerpo: CharacterBody2D):
-	cuerpo.rotation_degrees = Vector2(gravity_direction.x, -gravity_direction.y).angle()
+	cuerpo.rotation_degrees = Vector2(gravity_direction.x, -gravity_direction.y).angle() * 180.0/PI + 90
