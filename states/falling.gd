@@ -3,9 +3,11 @@ extends PlayerState
 func enter(_previous_state_path: String, _data := {}) -> void:
 	player.animatedSprite.play("falling")
 	_update_velocity()
+	player.change_orientation(player.gravity_dir_dis)
 
 func physics_update(_delta: float) -> void:
 	_update_velocity()
+	player.change_orientation(player.gravity_dir_dis)
 	player.move_and_slide()
 
 	if player.is_on_floor():
