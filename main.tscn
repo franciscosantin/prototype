@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://n4fq1fmcaa5v" path="res://wall.tscn" id="1_wtcfe"]
 [ext_resource type="PackedScene" uid="uid://cufyy63i7mqwm" path="res://player.tscn" id="2_0e48y"]
 [ext_resource type="PackedScene" uid="uid://bj0d6ofli8rmw" path="res://attachable_wall.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cj5sfikcwyixd" path="res://ant.tscn" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cn1njjqhmt304" path="res://attachable_area.tscn" id="5_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
@@ -39,3 +40,6 @@ position = Vector2(-191, 150)
 scale = Vector2(2, 1)
 
 [node name="AttachableArea" parent="." unique_id=1721860233 instance=ExtResource("5_lquwl")]
+
+[node name="ant" parent="." unique_id=1146882141 instance=ExtResource("5_7mycd")]
+position = Vector2(-220, 26)

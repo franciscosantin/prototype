@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://cj5sfikcwyixd"]
+
+[ext_resource type="Script" uid="uid://bir2t7estt40g" path="res://ant.gd" id="1_xtrik"]
+[ext_resource type="Texture2D" uid="uid://bq60w3vgju33b" path="res://icon.svg" id="2_bulnm"]
+[ext_resource type="Script" uid="uid://d0bqjcjmrdhxp" path="res://state_machine.gd" id="3_g3ivx"]
+[ext_resource type="Script" uid="uid://dc8g8qa21yw8g" path="res://states/idle.gd" id="4_dhyn0"]
+[ext_resource type="Script" uid="uid://dun1fhmbqoofc" path="res://states/falling.gd" id="5_o8e7g"]
+[ext_resource type="Script" uid="uid://coqdodnqg3v66" path="res://states/running.gd" id="6_vohnw"]
+[ext_resource type="Script" uid="uid://v2chbmgknt6f" path="res://states/hooked.gd" id="7_jwpso"]
+[ext_resource type="Script" uid="uid://cfax8do50g4hp" path="res://states/climbing.gd" id="8_3vr8v"]
+[ext_resource type="Texture2D" uid="uid://bklm63uvrb02g" path="res://assets/player/animations/climbing_hanging/spriteclimbinghanging-0.png" id="9_0msx1"]
+[ext_resource type="Texture2D" uid="uid://cf4h0tf6pjmbo" path="res://assets/player/animations/climbing_hanging/spriteclimbinghanging-1.png" id="10_fa6t3"]
+[ext_resource type="Texture2D" uid="uid://culgjem0swyvd" path="res://assets/player/animations/climbing_hanging/spriteclimbinghanging-2.png" id="11_x12i8"]
+[ext_resource type="Texture2D" uid="uid://bgocwn8nhyl81" path="res://assets/player/animations/climbing_hanging/spriteclimbinghanging-3.png" id="12_pxtlm"]
+[ext_resource type="Texture2D" uid="uid://dcjhah1ypnyub" path="res://assets/player/animations/climbing_hanging/spriteclimbinghanging-4.png" id="13_qgxyw"]
+[ext_resource type="Texture2D" uid="uid://bflu5whl1k3vs" path="res://assets/player/animations/falling/spritefalling-0.png" id="14_jvttg"]
+[ext_resource type="Texture2D" uid="uid://ut6hh4tc86c1" path="res://assets/player/animations/falling/spritefalling-1.png" id="15_ragae"]
+[ext_resource type="Texture2D" uid="uid://baglb23k6khwd" path="res://assets/player/animations/falling/spritefalling-2.png" id="16_4csap"]
+[ext_resource type="Texture2D" uid="uid://dq7ayglnwa1dn" path="res://assets/player/animations/falling/spritefalling-3.png" id="17_y8gg1"]
+[ext_resource type="Texture2D" uid="uid://css0cg0k4u7nh" path="res://assets/player/animations/falling/spritefalling-4.png" id="18_ejudi"]
+[ext_resource type="Texture2D" uid="uid://nsvjewitbado" path="res://assets/player/animations/falling/spritefalling-5.png" id="19_jsoci"]
+[ext_resource type="Texture2D" uid="uid://cxk5ckwg6reoh" path="res://assets/player/animations/floor_climbing/spritefloorclimbing-0.png" id="20_okhtu"]
+[ext_resource type="Texture2D" uid="uid://ch8o8ul1tigtk" path="res://assets/player/animations/floor_climbing/spritefloorclimbing-1.png" id="21_jpe16"]
+[ext_resource type="Texture2D" uid="uid://lwy28rfk7twq" path="res://assets/player/animations/floor_climbing/spritefloorclimbing-2.png" id="22_3tb38"]
+[ext_resource type="Texture2D" uid="uid://b71ntbdsvjy57" path="res://assets/player/animations/floor_climbing/spritefloorclimbing-3.png" id="23_gkwuj"]
+[ext_resource type="Texture2D" uid="uid://pffvh2e2ya6m" path="res://assets/player/animations/idle/spriteidle-0.png" id="24_0cq5f"]
+[ext_resource type="Texture2D" uid="uid://cjiy1gumww0dw" path="res://assets/player/animations/idle/spriteidle-1.png" id="25_6el2j"]
+[ext_resource type="Texture2D" uid="uid://bk5a6luxmrogm" path="res://assets/player/animations/idle/spriteidle-2.png" id="26_8lng7"]
+[ext_resource type="Texture2D" uid="uid://cu8a5bv5kbspx" path="res://assets/player/animations/idle/spriteidle-3.png" id="27_vnehj"]
+[ext_resource type="Texture2D" uid="uid://b78oopmws278b" path="res://assets/player/animations/side_climbing/spritesideclimbing-0.png" id="28_2b3ya"]
+[ext_resource type="Texture2D" uid="uid://b770ujany10qw" path="res://assets/player/animations/side_climbing/spritesideclimbing-1.png" id="29_jl6h6"]
+[ext_resource type="Texture2D" uid="uid://cwkunidd6ppk7" path="res://assets/player/animations/side_climbing/spritesideclimbing-2.png" id="30_2vv2k"]
+[ext_resource type="Texture2D" uid="uid://dqwd7olku3ipg" path="res://assets/player/animations/side_climbing/spritesideclimbing-3.png" id="31_iu76f"]
+[ext_resource type="Texture2D" uid="uid://dinkyu3vc6ynh" path="res://assets/player/animations/walking/spritewalking-0.png" id="32_fbt51"]
+[ext_resource type="Texture2D" uid="uid://c87ovt40d8dc4" path="res://assets/player/animations/walking/spritewalking-1.png" id="33_sebll"]
+[ext_resource type="Texture2D" uid="uid://de20oenqi0fxf" path="res://assets/player/animations/walking/spritewalking-2.png" id="34_xt3ma"]
+[ext_resource type="Texture2D" uid="uid://bk7lfeo7dnjda" path="res://assets/player/animations/walking/spritewalking-3.png" id="35_iooyq"]
+[ext_resource type="Texture2D" uid="uid://4udb62ji54mm" path="res://assets/player/animations/walking/spritewalking-4.png" id="36_yacqy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(60, 127)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pbfsw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_0msx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fa6t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_x12i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pxtlm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qgxyw")
+}],
+"loop": true,
+"name": &"climbing_hanging",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_jvttg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ragae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_4csap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_y8gg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ejudi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jsoci")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_okhtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jpe16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_3tb38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_gkwuj")
+}],
+"loop": true,
+"name": &"floor_climbing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_0cq5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_6el2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_8lng7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_vnehj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_2b3ya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_jl6h6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_2vv2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_iu76f")
+}],
+"loop": true,
+"name": &"side_climbing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_fbt51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_sebll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_xt3ma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_iooyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_yacqy")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ek41f"]
+size = Vector2(132, 143)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1146882141]
+script = ExtResource("1_xtrik")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2051419795]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1877354236]
+visible = false
+texture = ExtResource("2_bulnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2112898129]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1060138554]
+script = ExtResource("3_g3ivx")
+metadata/_custom_type_script = "uid://d0bqjcjmrdhxp"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=726520686]
+script = ExtResource("4_dhyn0")
+
+[node name="Falling" type="Node" parent="StateMachine" unique_id=1575128729]
+script = ExtResource("5_o8e7g")
+
+[node name="Running" type="Node" parent="StateMachine" unique_id=732725909]
+script = ExtResource("6_vohnw")
+
+[node name="Hooked" type="Node" parent="StateMachine" unique_id=1091489163]
+script = ExtResource("7_jwpso")
+
+[node name="Climbing" type="Node" parent="StateMachine" unique_id=2011317618]
+script = ExtResource("8_3vr8v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1264680714]
+position = Vector2(0, -1)
+scale = Vector2(2.453125, 2.453125)
+sprite_frames = SubResource("SpriteFrames_pbfsw")
+animation = &"climbing_hanging"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=296138292]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1370683206]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_ek41f")
