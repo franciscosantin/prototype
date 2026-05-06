@@ -1,5 +1,6 @@
 class_name Player extends CharacterBody2D
 
+@export var health: float = 100.0
 @export var walk_speed: float = 300.0
 @export var climb_speed: float = 80.0
 @export var gravity_power: float = 50.0
@@ -46,6 +47,17 @@ func aplicar_gravedad(dir: Vector2) -> void:
 		
 func change_orientation(g_dir: Vector2) -> void:
 	rotation_degrees = g_dir.angle()*180/PI-90
+
+func apply_fall_damage() -> void:
+	var dmg = (velocity/terminal_velocity).length() * 100.0
+	health -= dmg
+	is_alive_update()
+	print(health)
+
+func is_alive_update() -> void:
+	if health <= 0:
+		health = 0
+		# TODO: Notificar otras clases
 
 func can_run() -> bool:
 	if !is_pressing:

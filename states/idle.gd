@@ -2,6 +2,7 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.animatedSprite.play("idle")
+	player.apply_fall_damage()
 	player.velocity = Vector2.ZERO
 	player.change_orientation(player.gravity_dir_dis)
 

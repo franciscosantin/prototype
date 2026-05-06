@@ -160,10 +160,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ek41f"]
 size = Vector2(132, 143)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtrik"]
+size = Vector2(1174, 945)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1146882141]
 script = ExtResource("1_xtrik")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2051419795]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1877354236]
 visible = false
@@ -203,3 +204,8 @@ animation = &"climbing_hanging"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1370683206]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_ek41f")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1887896992]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=800838323]
+shape = SubResource("RectangleShape2D_xtrik")
