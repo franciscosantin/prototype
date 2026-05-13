@@ -10,6 +10,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(1250, 1012)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7mycd"]
+vertices = PackedVector2Array(-329.5078, 168.95313, 353.85156, 171.95313, 350.14063, 422.03125, -419.10156, 424.96094, -425.89063, -188, -327.5078, 128.96875, 355.90625, -188, -0.9375, 130, 353.07813, 132.90625)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(6, 8, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 140, 363, 143, 366, -198, -436, -198, -429, 435, 360, 432, 364, 162, -319, 159, -318, 139)])
+
 [node name="Node2D" type="Node2D" unique_id=176820975]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=950884352]
@@ -43,3 +48,6 @@ scale = Vector2(2, 1)
 
 [node name="ant" parent="." unique_id=1146882141 instance=ExtResource("5_7mycd")]
 position = Vector2(-220, 26)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=2100863815]
+navigation_polygon = SubResource("NavigationPolygon_7mycd")

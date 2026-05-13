@@ -3,11 +3,9 @@
 [ext_resource type="Script" uid="uid://bir2t7estt40g" path="res://ant.gd" id="1_xtrik"]
 [ext_resource type="Texture2D" uid="uid://bq60w3vgju33b" path="res://icon.svg" id="2_bulnm"]
 [ext_resource type="Script" uid="uid://d0bqjcjmrdhxp" path="res://state_machine.gd" id="3_g3ivx"]
-[ext_resource type="Script" uid="uid://dc8g8qa21yw8g" path="res://states/idle.gd" id="4_dhyn0"]
-[ext_resource type="Script" uid="uid://dun1fhmbqoofc" path="res://states/falling.gd" id="5_o8e7g"]
-[ext_resource type="Script" uid="uid://coqdodnqg3v66" path="res://states/running.gd" id="6_vohnw"]
-[ext_resource type="Script" uid="uid://v2chbmgknt6f" path="res://states/hooked.gd" id="7_jwpso"]
-[ext_resource type="Script" uid="uid://cfax8do50g4hp" path="res://states/climbing.gd" id="8_3vr8v"]
+[ext_resource type="Script" uid="uid://g3mt7erehsxs" path="res://states/ant_states/idle.gd" id="4_75ima"]
+[ext_resource type="Script" uid="uid://bqcxpmpyiseo8" path="res://states/ant_states/hostile.gd" id="5_kvl2v"]
+[ext_resource type="Script" uid="uid://ved8gcn48qsk" path="res://states/ant_states/falling.gd" id="6_kvl2v"]
 [ext_resource type="Texture2D" uid="uid://bklm63uvrb02g" path="res://assets/player/animations/climbing_hanging/spriteclimbinghanging-0.png" id="9_0msx1"]
 [ext_resource type="Texture2D" uid="uid://cf4h0tf6pjmbo" path="res://assets/player/animations/climbing_hanging/spriteclimbinghanging-1.png" id="10_fa6t3"]
 [ext_resource type="Texture2D" uid="uid://culgjem0swyvd" path="res://assets/player/animations/climbing_hanging/spriteclimbinghanging-2.png" id="11_x12i8"]
@@ -161,7 +159,7 @@ animations = [{
 size = Vector2(132, 143)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xtrik"]
-size = Vector2(1174, 945)
+size = Vector2(354.5, 341.625)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1146882141]
 script = ExtResource("1_xtrik")
@@ -178,20 +176,14 @@ shape = SubResource("RectangleShape2D_onrkg")
 script = ExtResource("3_g3ivx")
 metadata/_custom_type_script = "uid://d0bqjcjmrdhxp"
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=726520686]
-script = ExtResource("4_dhyn0")
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1574417204]
+script = ExtResource("4_75ima")
 
-[node name="Falling" type="Node" parent="StateMachine" unique_id=1575128729]
-script = ExtResource("5_o8e7g")
+[node name="Hostile" type="Node" parent="StateMachine" unique_id=347432781]
+script = ExtResource("5_kvl2v")
 
-[node name="Running" type="Node" parent="StateMachine" unique_id=732725909]
-script = ExtResource("6_vohnw")
-
-[node name="Hooked" type="Node" parent="StateMachine" unique_id=1091489163]
-script = ExtResource("7_jwpso")
-
-[node name="Climbing" type="Node" parent="StateMachine" unique_id=2011317618]
-script = ExtResource("8_3vr8v")
+[node name="Falling" type="Node" parent="StateMachine" unique_id=170646608]
+script = ExtResource("6_kvl2v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1264680714]
 position = Vector2(0, -1)
@@ -209,3 +201,8 @@ shape = SubResource("RectangleShape2D_ek41f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=800838323]
 shape = SubResource("RectangleShape2D_xtrik")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1242365113]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

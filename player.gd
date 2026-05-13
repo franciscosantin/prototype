@@ -74,7 +74,7 @@ func can_run() -> bool:
 	else:
 		move_dir = Vector2(0, sign(diff.y))
 	
-	return move_dir not in [-gravity_dir, gravity_dir]
+	return move_dir not in [-gravity_dir_dis, gravity_dir_dis]
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventMouseButton:

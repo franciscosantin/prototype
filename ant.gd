@@ -1,10 +1,31 @@
-class_name Ant extends Player
+class_name Ant extends CharacterBody2D
+
+@export var health: float = 100.0
+@export var walk_speed: float = 300.0
+@export var climb_speed: float = 80.0
+@export var gravity_power: float = 50.0
+@export var terminal_velocity: float = 2000.0
+
+var gravity_dir: Vector2 = Vector2.ZERO
+var gravity_dir_dis: Vector2 = Vector2(0,-1)
+var attachable_walls = []
+var current_floor: StaticBody2D = null
+var player_in_proximity := false
+var player: Player = null
+var valid_moving_dir: Vector2 = Vector2.ZERO
+@onready var fsm := $StateMachine
+@onready var animatedSprite := $AnimatedSprite2D
+@onready var detectionArea := $DetectionArea
+@onready var navigation: NavigationAgent2D = $NavigationAgent2D
 
 func _in_proximity_to_attachable() -> bool:
 	for body in $Area2D.get_overlapping_bodies():
 		if body is AttachableWall:
 			return true
 	return false
+
+func update_floor() -> void:
+	pass
 
 func aplicar_gravedad(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
@@ -21,25 +42,24 @@ func aplicar_gravedad(dir: Vector2) -> void:
 func change_orientation(g_dir: Vector2) -> void:
 	rotation_degrees = g_dir.angle()*180/PI-90
 
-func can_run() -> bool:
-	if !is_pressing:
-		return false
-	var target = get_global_mouse_position()
-	var diff = target - global_position
-	
-	if diff.length() <= 20:
-		return false
-	
-	var move_dir = Vector2.ZERO
-	if abs(diff.x) > abs(diff.y):
-		move_dir = Vector2(sign(diff.x), 0)
+func get_moving_dir() -> void:
+	var collision := get_last_slide_collision()
+	var collision_normal := collision.get_normal()
+	print("Normal a la colisión:")
+	print(collision_normal)
+	valid_moving_dir = Vector2(collision_normal.y, collision_normal.x).normalized()
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is StaticBody2D:
+		attachable_walls.append(body)
+	if current_floor == null:
+		current_floor = attachable_walls.get(0)
+
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	print("Un cuerpo entro al area")
+	print(body)
+	if body is Player:
+		player_in_proximity = true
+		player = body
 	else:
-		move_dir = Vector2(0, sign(diff.y))
-	
-	return move_dir not in [-gravity_dir, gravity_dir]
-
-func _unhandled_input(event: InputEvent) -> void:
-	pass
-
-func _on_hook_button_button_down() -> void:
-	pass
+		player_in_proximity = false
